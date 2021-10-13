@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:property-placeholder location="classpath:application.properties"/>
+
+    <bean id="myWolf" class="peaksoft.Wolf">
+        <property name="name" value="${wolf.name}"/>
+        <property name="age" value="${wolf.age}"/>
+        <property name="breed" value="${wolf.breed}"/>
+    </bean>
+    <bean id="myFirstPerson" class="peaksoft.Person">
+        <property name="animal" ref="myWolf"/>
+        <property name="name" value="${firstPerson.name}"/>
+        <property name="age" value="${firstPerson.age}"/>
+    </bean>
+
+    <bean id="myCat" class="peaksoft.Cat">
+        <property name="name" value="${cat.name}"/>
+        <property name="age" value="${cat.age}"/>
+        <property name="breed" value="${cat.breed}"/>
+    </bean>
+    <bean id="mySecondPerson" class="peaksoft.Person">
+        <property name="animal" ref="myCat"/>
+        <property name="name" value="${secondPerson.name}"/>
+        <property name="age" value="${secondPerson.age}"/>
+    </bean>
+</beans>
